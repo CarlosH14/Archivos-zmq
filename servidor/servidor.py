@@ -5,44 +5,6 @@ import os
 
 ROUTE = "tcp://*:8001"
 
-def carpeta_usuario(name:str) -> bool: #Funcion para determinar si una carpeta existe
-    return path.isdir("archivos/{}".format(name)) #Se usa para crear un nuevo usuario si no existe
-
-#Funciones para los archivos que reciebn un numero de arguemntos con un nombre fijo
-
-
-
-def descargar(nombre, funcion, aux): #Descargar archivos
-    ruta = "archivos/{}/{}".format(nombre,aux) #Elabora la ruta del archivo a partir del usuario y del nombre del archivo
-    if not path.isfile(ruta): #Si no encuentra el archivo retorna un error
-        respuesta = "archivo no encontrado"
-        respuesta.encode('utf-8')
-        return respuesta
-    with open(ruta,"rb") as file: #Si encuentra el archivo lee su contenido
-        contenido = file.read()
-    return contenido
-
-
-
-def descargarenlace(nombre, funcion, aux): #Función para descargar un archivo a partir de un enlace
-    enlace = aux #Obtiene el enlace de la tercera posicion del comando y la recibe como parametro
-    print(enlace)
-    ruta = enlace.split("$") #Separa en ruta el enlace antes y despues del $
-    print(ruta)
-    n_arch = ruta[0].split("/") #Variable que guarda la dirección del archivo
-    print(n_arch)
-    ruta = "archivos/{}/{}".format(n_arch[1],n_arch[2]) #Se crea la ruta a partir de los parametros anteriores
-    n_archivo = n_arch[2] #El nombre del archivo se encuentra en la tercera posicion, se guarda para enviarlo en el retorno
-    if not path.isfile(ruta):#Si no encuentra el archivo con respecto al enlace retorna un error
-        respuesta = "archivo no encontrado"
-        respuesta.encode('utf-8')
-        return respuesta
-    with open(ruta,"rb") as file: #Si encuentra el archivo lee su contenido
-        contenido = file.read()
-    return contenido
-
-def listar(**kwargs): #Función para listar los archivos de un usuario
-    pass
 
 if __name__ == "__main__":
 
