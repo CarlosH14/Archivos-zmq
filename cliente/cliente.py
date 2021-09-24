@@ -48,10 +48,14 @@ if __name__ == "__main__":
                 break # Termina la operación
             desc_aux= aux.decode('utf-8') # Decodifica el nombre del archivo
             desc_cont= m[1] # Asigna el contenido del archivo recibido a desc_cont
-            with open(desc_aux,"wb") as file: # Crea el archivo o lo abre para sobreescribirlo
-                file.seek(auxseek0) # Se ubica dentro del archivo
-                auxseek0 = auxseek0 + auxseek10 # Aumenta el seek para la ubicación
-                file.write(desc_cont) # Escribe el contenido en el archivo
+            if auxseek0 == 0:
+                with open(desc_aux,"wb") as file: # Crea el archivo o lo abre para sobreescribirlo
+                    file.seek(auxseek0) # Se ubica dentro del archivo
+                    auxseek0 = auxseek0 + auxseek10 # Aumenta el seek para la ubicación
+                    file.write(desc_cont) # Escribe el contenido en el archivo
+            else:
+                with open(desc_aux,"ab") as file: # Crea el archivo o lo abre para sobreescribirlo
+                    file.write(desc_cont) # Escribe el contenido en el archivo
             m[1]=aux # Cambia el contenido del archivo por el nombre del archivo para imprimirlo en pantalla
             print(m) # Imprime en pantalla la respuesta del servidor
 
@@ -70,10 +74,14 @@ if __name__ == "__main__":
             n_arch = ruta[0].split("/") # Variable que guarda la dirección del archivo
             ruta = (n_arch[2]) # Se crea la ruta a partir de los parametros anteriores
             desc_cont= m[1]  # Asigna el contenido del archivo recibido a desc_cont
-            with open(ruta,"wb") as file: # Crea el archivo o lo abre para sobreescribirlo
-                file.seek(auxseek0) # Se ubica dentro del archivo
-                auxseek0 = auxseek0 + auxseek10 # Aumenta el seek para la ubicación
-                file.write(desc_cont) # Escribe el contenido en el archivo
+           if auxseek0 == 0:
+                with open(desc_aux,"wb") as file: # Crea el archivo o lo abre para sobreescribirlo
+                    file.seek(auxseek0) # Se ubica dentro del archivo
+                    auxseek0 = auxseek0 + auxseek10 # Aumenta el seek para la ubicación
+                    file.write(desc_cont) # Escribe el contenido en el archivo
+            else:
+                with open(desc_aux,"ab") as file: # Crea el archivo o lo abre para sobreescribirlo
+                    file.write(desc_cont) # Escribe el contenido en el archivo
             m[1]=aux # Cambia el contenido del archivo por el nombre del archivo para imprimirlo en pantalla
             print(m) # Imprime en pantalla la respuesta del servidor
 
