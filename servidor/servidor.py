@@ -71,7 +71,7 @@ if __name__ == "__main__":
                 with open(ruta,"rb") as file: #Si encuentra el archivo lee su contenido
                     file.seek(auxseek0) # Se ubica dentro del archivo
                     auxseek0 = auxseek0 + auxseek10 # Aumenta el seek para la ubicación
-                    contenido = file.read(auxseek0) # Lee 10 MB del archivo y se desplaza hasta alli
+                    contenido = file.read(auxseek10) # Lee 10 MB del archivo y se desplaza hasta alli
                     if not contenido: # Si no hay mas contenido para leer
                         s.send_multipart([fin]) # Envia el acuse de finalización
                         break # Termina la operación
@@ -91,7 +91,7 @@ if __name__ == "__main__":
                 with open(ruta,"rb") as file: # Si encuentra el archivo lee su contenido
                     file.seek(auxseek0) # Se ubica dentro del archivo
                     auxseek0 = auxseek0 + auxseek10 # Aumenta el seek para la ubicación
-                    contenido = file.read(auxseek0) # Lee 10 MB del archivo y se desplaza hasta alli
+                    contenido = file.read(auxseek10) # Lee 10 MB del archivo y se desplaza hasta alli
                     if not contenido: # Si no hay mas contenido para leer
                         s.send_multipart([fin]) # Envia el acuse de finalización
                         break # Termina la operación
