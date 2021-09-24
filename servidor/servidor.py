@@ -44,6 +44,7 @@ if __name__ == "__main__":
                     file.write(contenido) #Escribe el contenido en el archivo
                 respuesta = "subido" # Establece la respuesta para enviar
                 respuesta.encode('utf-8') # Codifica la respuesta
+                desc_cont = b'0'
 
             elif funcion == "enlace": # Función de obtener enlace
                 contenido=m[3] # Recibe el contenido en la cuarta posición
