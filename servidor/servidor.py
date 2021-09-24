@@ -38,10 +38,14 @@ if __name__ == "__main__":
                 contenido=m[3] # Recibe el contenido en la cuarta posición
                 if not path.isdir("archivos/{}".format(nombre)): # Si no existe una carpeta con el nombre del usario
                     os.makedirs("archivos/{}".format(nombre)) #Crea una carpeta para el usuario
-                with open("archivos/{}/{}".format(nombre,aux),"wb") as file: # Abre el archivo en la ubicación
-                    file.seek(auxseek0) # Se ubica en la posición
-                    auxseek0 = auxseek0 + auxseek10 # Aumenta el seek para la ubicación
-                    file.write(contenido) #Escribe el contenido en el archivo
+                if auxseek0 == 0:
+                    with open("archivos/{}/{}".format(nombre,aux),"wb") as file: # Abre el archivo en la ubicación
+                        file.seek(auxseek0) # Se ubica en la posición
+                        auxseek0 = auxseek0 + auxseek10 # Aumenta el seek para la ubicación
+                        file.write(contenido) #Escribe el contenido en el archivo
+                else :
+                    with open("archivos/{}/{}".format(nombre,aux),"ab") as file: # Abre el archivo en la ubicación
+                        file.write(contenido) #Escribe el contenido en el archivo
                 respuesta = "subido" # Establece la respuesta para enviar
                 respuesta.encode('utf-8') # Codifica la respuesta
                 desc_cont = b'0'
